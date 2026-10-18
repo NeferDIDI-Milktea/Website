@@ -226,6 +226,52 @@ footer{background:#0d0d0d;color:#8c8c8c;padding:46px 0 30px;font-size:13.5px}
 
 .dish-photo{width:100%;height:210px;object-fit:contain;background:#fffaf6;border-radius:12px;margin-bottom:8px;}
 .dish-icon{display:none!important;}
+
+/* ================= EVENTS ================= */
+  .nfd-events { --o:var(--orange); --dark:var(--black); background:var(--cream); }
+
+  /* ---- event highlights (logos) ---- */
+  .nfd-slider { position:relative; margin-bottom:24px; }
+  .nfd-track { display:flex; gap:22px; overflow-x:auto; scroll-behavior:smooth; padding:6px 44px 4px; scrollbar-width:none; justify-content:center; }
+  .nfd-track::-webkit-scrollbar { display:none; }
+  .nfd-hl { flex:none; width:92px; text-align:center; }
+  .nfd-ring { width:80px; height:80px; margin:0 auto 8px; border-radius:50%; padding:3px;
+    background:conic-gradient(from 200deg,#f47721,#ffb36b,#e0457b,#f47721); }
+  .nfd-ring span { display:block; width:100%; height:100%; border-radius:50%; border:3px solid #fff8f2; overflow:hidden; background:#fff; }
+  .nfd-ring img { width:100%; height:100%; object-fit:cover; display:block; }
+  .nfd-hl b { display:block; font-size:.78rem; font-weight:600; color:var(--dark); line-height:1.25; }
+  .nfd-arrow { position:absolute; top:34px; transform:translateY(-50%); width:36px; height:36px; border-radius:50%;
+    border:0; background:#fff; color:var(--o); font-size:1.2rem; cursor:pointer; box-shadow:0 3px 10px rgba(0,0,0,.15); z-index:2; }
+  .nfd-arrow.l { left:0; } .nfd-arrow.r { right:0; }
+
+  /* ---- photo carousel ---- */
+  .nfd-gal { position:relative; }
+  .nfd-gallery { display:flex; gap:12px; overflow-x:auto; scroll-snap-type:x proximity; scroll-behavior:smooth;
+    padding:4px 2px 14px; scrollbar-width:none; cursor:grab; -webkit-overflow-scrolling:touch; }
+  .nfd-gallery::-webkit-scrollbar { display:none; }
+  .nfd-gallery.drag { cursor:grabbing; }
+  .nfd-gallery figure { flex:none; height:380px; margin:0; position:relative; border-radius:16px; overflow:hidden;
+    scroll-snap-align:start; cursor:zoom-in; background:#f3e3d4; box-shadow:0 4px 16px rgba(244,119,33,.12); }
+  .nfd-gallery img { height:100%; width:auto; display:block; transition:transform .35s; -webkit-user-drag:none; user-select:none; }
+  .nfd-gallery figure:hover img { transform:scale(1.04); }
+  .nfd-gallery figcaption { position:absolute; left:0; right:0; bottom:0; padding:22px 12px 10px; color:#fff; font-size:.8rem; font-weight:600;
+    background:linear-gradient(transparent, rgba(0,0,0,.65)); opacity:0; transition:.25s; }
+  .nfd-gallery figure:hover figcaption { opacity:1; }
+  .nfd-garrow { position:absolute; top:50%; transform:translateY(-50%); z-index:3; width:44px; height:44px; border-radius:50%;
+    border:0; background:#fff; color:var(--o); font-size:1.5rem; line-height:1; cursor:pointer; box-shadow:0 4px 14px rgba(0,0,0,.22); }
+  .nfd-garrow:hover { background:var(--o); color:#fff; }
+  .nfd-garrow.l { left:8px; } .nfd-garrow.r { right:8px; }
+
+  /* ---- lightbox ---- */
+  .nfd-lightbox { position:fixed; inset:0; background:rgba(15,10,6,.92); display:none; align-items:center; justify-content:center; z-index:9999; padding:20px; }
+  .nfd-lightbox.open { display:flex; }
+  .nfd-lightbox img { max-width:94vw; max-height:82vh; border-radius:12px; }
+  .nfd-lightbox .nfd-cap { position:absolute; bottom:20px; left:0; right:0; text-align:center; color:#fff; font-size:.92rem; }
+  .nfd-lightbox button { position:absolute; background:rgba(255,255,255,.14); color:#fff; border:0; width:44px; height:44px; border-radius:50%; font-size:1.3rem; cursor:pointer; }
+  .nfd-lightbox .nfd-close { top:16px; right:16px; }
+  .nfd-lightbox .nfd-prev { left:12px; top:50%; }
+  .nfd-lightbox .nfd-next { right:12px; top:50%; }
+  @media (max-width:600px){ .nfd-gallery figure{height:290px;} .nfd-garrow{display:none;} .nfd-gallery figcaption{opacity:1;} .nfd-track{padding:6px 8px 4px; justify-content:flex-start;} .nfd-arrow{display:none;} }
 </style>
 </head>
 <body>
@@ -242,6 +288,7 @@ footer{background:#0d0d0d;color:#8c8c8c;padding:46px 0 30px;font-size:13.5px}
 <a class="nav-link" href="#story">Our Story</a>
 <a class="nav-link" href="#menu">Menu</a>
 <a class="nav-link" href="#branches">Branches</a>
+<a class="nav-link" href="#events">Events</a>
 <a class="nav-link" href="#contact">Contact</a>
 </nav>
 <a class="btn btn-primary header-cta" href="#branches">Find a branch</a>
@@ -760,6 +807,62 @@ footer{background:#0d0d0d;color:#8c8c8c;padding:46px 0 30px;font-size:13.5px}
 </div>
 </div>
 </main>
+<!-- ================= EVENTS ================= -->
+<section class="section nfd-events" id="events">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="eyebrow">Out &amp; about</div>
+      <h2>Our events</h2>
+    </div>
+    <!-- ===== HIGHLIGHTS: logos of the events we joined ===== -->
+    <div class="nfd-slider">
+      <button class="nfd-arrow l" aria-label="Previous">‹</button>
+      <div class="nfd-track">
+        <div class="nfd-hl"><div class="nfd-ring"><span><img src="logo-anyma.jpg" alt="Anyma"></span></div><b>Anyma</b></div>
+        <div class="nfd-hl"><div class="nfd-ring"><span><img src="logo-tiesto.jpg" alt="Tiësto"></span></div><b>Tiësto</b></div>
+        <div class="nfd-hl"><div class="nfd-ring"><span><img src="logo-wegz.jpg" alt="WEGZ × PUBG"></span></div><b>WEGZ × PUBG</b></div>
+        <div class="nfd-hl"><div class="nfd-ring"><span><img src="logo-hekma.jpg" alt="Beit El Hekma"></span></div><b>Beit El Hekma</b></div>
+        <div class="nfd-hl"><div class="nfd-ring"><span><img src="logo-miu.jpg" alt="MIU Theatre"></span></div><b>MIU Theatre</b></div>
+        <div class="nfd-hl"><div class="nfd-ring"><span><img src="logo-huawei.jpg" alt="Huawei"></span></div><b>Huawei</b></div>
+        <div class="nfd-hl"><div class="nfd-ring"><span><img src="logo-garden.jpg" alt="Women's Day"></span></div><b>Women's Day</b></div>
+      </div>
+      <button class="nfd-arrow r" aria-label="Next">›</button>
+    </div>
+    <!-- ===== PHOTO CAROUSEL (swipe / drag / arrows) ===== -->
+    <div class="nfd-gal">
+      <button class="nfd-garrow l" aria-label="Previous photos">‹</button>
+      <div class="nfd-gallery">
+      <figure data-full="pyramids-01.jpg"><img src="pyramids-01.jpg" alt="Pyramids of Giza" loading="lazy"><figcaption>Pyramids of Giza</figcaption></figure>
+      <figure data-full="wegz-01.jpg"><img src="wegz-01.jpg" alt="WEGZ × PUBG Mobile × Neferdidi" loading="lazy"><figcaption>WEGZ × PUBG Mobile × Neferdidi</figcaption></figure>
+      <figure data-full="spring-01.jpg"><img src="spring-01.jpg" alt="Beit El Hekma · Chinese Spring Festival 2026" loading="lazy"><figcaption>Beit El Hekma · Chinese Spring Festival 2026</figcaption></figure>
+      <figure data-full="pyramids-02.jpg"><img src="pyramids-02.jpg" alt="Pyramids of Giza" loading="lazy"><figcaption>Pyramids of Giza</figcaption></figure>
+      <figure data-full="garden-01.jpg"><img src="garden-01.jpg" alt="Women's Day · International Garden" loading="lazy"><figcaption>Women's Day · International Garden</figcaption></figure>
+      <figure data-full="wegz-02.jpg"><img src="wegz-02.jpg" alt="WEGZ × PUBG Mobile × Neferdidi" loading="lazy"><figcaption>WEGZ × PUBG Mobile × Neferdidi</figcaption></figure>
+      <figure data-full="spring-02.jpg"><img src="spring-02.jpg" alt="Beit El Hekma · Chinese Spring Festival 2026" loading="lazy"><figcaption>Beit El Hekma · Chinese Spring Festival 2026</figcaption></figure>
+      <figure data-full="pyramids-03.jpg"><img src="pyramids-03.jpg" alt="Pyramids of Giza" loading="lazy"><figcaption>Pyramids of Giza</figcaption></figure>
+      <figure data-full="garden-02.jpg"><img src="garden-02.jpg" alt="Women's Day · International Garden" loading="lazy"><figcaption>Women's Day · International Garden</figcaption></figure>
+      <figure data-full="wegz-03.jpg"><img src="wegz-03.jpg" alt="WEGZ × PUBG Mobile × Neferdidi" loading="lazy"><figcaption>WEGZ × PUBG Mobile × Neferdidi</figcaption></figure>
+      <figure data-full="spring-03.jpg"><img src="spring-03.jpg" alt="Beit El Hekma · Chinese Spring Festival 2026" loading="lazy"><figcaption>Beit El Hekma · Chinese Spring Festival 2026</figcaption></figure>
+      <figure data-full="pyramids-04.jpg"><img src="pyramids-04.jpg" alt="Pyramids of Giza" loading="lazy"><figcaption>Pyramids of Giza</figcaption></figure>
+      <figure data-full="wegz-04.jpg"><img src="wegz-04.jpg" alt="WEGZ × PUBG Mobile × Neferdidi" loading="lazy"><figcaption>WEGZ × PUBG Mobile × Neferdidi</figcaption></figure>
+      <figure data-full="garden-03.jpg"><img src="garden-03.jpg" alt="Women's Day · International Garden" loading="lazy"><figcaption>Women's Day · International Garden</figcaption></figure>
+      <figure data-full="pyramids-05.jpg"><img src="pyramids-05.jpg" alt="Pyramids of Giza" loading="lazy"><figcaption>Pyramids of Giza</figcaption></figure>
+      <figure data-full="pyramids-08.jpg"><img src="pyramids-08.jpg" alt="Pyramids of Giza" loading="lazy"><figcaption>Pyramids of Giza</figcaption></figure>
+      <figure data-full="pyramids-09.jpg"><img src="pyramids-09.jpg" alt="Pyramids of Giza" loading="lazy"><figcaption>Pyramids of Giza</figcaption></figure>
+      <figure data-full="pyramids-10.jpg"><img src="pyramids-10.jpg" alt="Pyramids of Giza" loading="lazy"><figcaption>Pyramids of Giza</figcaption></figure>
+      <figure data-full="garden-04.jpg"><img src="garden-04.jpg" alt="Women's Day · International Garden" loading="lazy"><figcaption>Women's Day · International Garden</figcaption></figure>
+    </div>
+      <button class="nfd-garrow r" aria-label="Next photos">›</button>
+    </div>
+  </div>
+</section>
+<div class="nfd-lightbox" id="nfdLightbox" aria-hidden="true">
+    <button class="nfd-close" aria-label="Close">✕</button>
+    <button class="nfd-prev" aria-label="Previous">‹</button>
+    <img alt="">
+    <button class="nfd-next" aria-label="Next">›</button>
+    <div class="nfd-cap"></div>
+  </div>
 <!-- ================= CONTACT ================= -->
 <section class="section contact" id="contact">
 <div class="container">
@@ -808,6 +911,7 @@ footer{background:#0d0d0d;color:#8c8c8c;padding:46px 0 30px;font-size:13.5px}
 <a href="#story">Our Story</a>
 <a href="#menu">Menu</a>
 <a href="#branches">Branches</a>
+<a href="#events">Events</a>
 <a href="#contact">Contact</a>
 </div>
 <div class="footer-col">
@@ -918,6 +1022,73 @@ toTop.addEventListener('click', () => scrollTo({ top: 0, behavior: reduce ? 'aut
 
 /* ---------- Year ---------- */
 document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+<script>
+(function () {
+  var sec = document.getElementById('events');
+  if (!sec) return;
+
+  /* slider arrows */
+  var track = sec.querySelector('.nfd-track');
+  sec.querySelector('.nfd-slider .nfd-arrow.l').onclick = function () { track.scrollBy({ left: -260 }); };
+  sec.querySelector('.nfd-slider .nfd-arrow.r').onclick = function () { track.scrollBy({ left: 260 }); };
+  var figs = sec.querySelectorAll('.nfd-gallery figure');
+
+  /* photo carousel: arrows + mouse drag (touch swipe works natively) */
+  var gal = sec.querySelector('.nfd-gallery');
+  sec.querySelector('.nfd-garrow.l').onclick = function () { gal.scrollBy({ left: -gal.clientWidth * 0.8 }); };
+  sec.querySelector('.nfd-garrow.r').onclick = function () { gal.scrollBy({ left: gal.clientWidth * 0.8 }); };
+  var down = false, moved = false, sx = 0, sl = 0;
+  gal.addEventListener('pointerdown', function (e) {
+    if (e.pointerType !== 'mouse') return;
+    down = true; moved = false; sx = e.clientX; sl = gal.scrollLeft;
+  });
+  window.addEventListener('pointermove', function (e) {
+    if (!down) return;
+    var dx = e.clientX - sx;
+    if (!moved && Math.abs(dx) > 5) {
+      moved = true; gal.classList.add('drag');
+      gal.style.scrollBehavior = 'auto'; gal.style.scrollSnapType = 'none';
+    }
+    if (moved) gal.scrollLeft = sl - dx;
+  });
+  window.addEventListener('pointerup', function () {
+    if (!down) return;
+    down = false;
+    if (moved) { gal.classList.remove('drag'); gal.style.scrollBehavior = ''; gal.style.scrollSnapType = ''; }
+  });
+
+
+  /* lightbox */
+  var box = document.getElementById('nfdLightbox');
+  var img = box.querySelector('img'), cap = box.querySelector('.nfd-cap');
+  var list = [], idx = 0;
+  function show(i) {
+    idx = (i + list.length) % list.length;
+    img.src = list[idx].getAttribute('data-full') || list[idx].querySelector('img').src;
+    cap.textContent = list[idx].querySelector('figcaption').textContent + '  ·  ' + (idx + 1) + '/' + list.length;
+  }
+  function close() { box.classList.remove('open'); document.body.style.overflow = ''; }
+  figs.forEach(function (f) {
+    f.addEventListener('click', function () {
+      if (moved) { moved = false; return; }
+      list = Array.prototype.slice.call(figs);
+      show(list.indexOf(f));
+      box.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  box.querySelector('.nfd-close').onclick = close;
+  box.querySelector('.nfd-prev').onclick = function () { show(idx - 1); };
+  box.querySelector('.nfd-next').onclick = function () { show(idx + 1); };
+  box.addEventListener('click', function (e) { if (e.target === box) close(); });
+  document.addEventListener('keydown', function (e) {
+    if (!box.classList.contains('open')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') show(idx - 1);
+    if (e.key === 'ArrowRight') show(idx + 1);
+  });
+})();
 </script>
 </body>
 </html>
